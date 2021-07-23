@@ -1,5 +1,6 @@
 """Classes for melon orders."""
 import random
+from datetime import datetime
 
 class AbstractMelonOrder():
 
@@ -29,7 +30,16 @@ class AbstractMelonOrder():
         return total
     
     def get_base_price(self):
-        return random.randint(5, 9)
+        base_price = random.randint(5, 9)
+        curr_time = datetime.now()
+        day_of_week = curr_time.weekday()
+        hour = curr_time.hour
+
+        if day_of_week >= 0 and day_of_week <= 5:
+            if hour >= 8 and hour <= 11:
+                base_price += 4
+
+        return base_price
 
 
     def mark_shipped(self):
