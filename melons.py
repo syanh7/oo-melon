@@ -58,6 +58,7 @@ class InternationalMelonOrder(AbstractMelonOrder):
 
 
 
+
 class GovernmentMelonOrder(AbstractMelonOrder):
     """An international (non-US) melon order."""
 
