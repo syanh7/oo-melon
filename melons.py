@@ -13,6 +13,10 @@ class AbstractMelonOrder():
         self.order_type = order_type
         self.tax = tax
 
+        if qty > 100:
+            raise TooManyMelonsError
+            
+
     def get_total(self):
         """Calculate price, including tax."""
 
@@ -86,3 +90,8 @@ class GovernmentMelonOrder(AbstractMelonOrder):
     
     def mark_inspection(self, passed):
         self.passed_inspection = passed
+
+
+class TooManyMelonsError(ValueError):
+     def __init__(self):
+        self.message = "Too Many Melons!"
